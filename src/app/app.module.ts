@@ -7,12 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TopnavComponent } from './topnav/topnav.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherComponent,
-    DashboardComponent
+    DashboardComponent,
+    TopnavComponent,
+    SidebarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
