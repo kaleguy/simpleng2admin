@@ -11,6 +11,8 @@ import { TopnavComponent } from './topnav/topnav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {GlobalState} from "./global.state";
+import { ContentHeaderComponent } from './content-header/content-header.component';
+import { MenuToggleComponent } from './menu-toggle/menu-toggle.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {GlobalState} from "./global.state";
     DashboardComponent,
     TopnavComponent,
     SidebarComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ContentHeaderComponent,
+    MenuToggleComponent
   ],
   imports: [
     BrowserModule,
