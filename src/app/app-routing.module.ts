@@ -12,11 +12,11 @@ const routes: Routes = [
     children: []
   },
   {
-    path: 'dashboard',
+    path: 'home',
     component: DashboardComponent,
     children: []
   },
-  { path: '',   redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

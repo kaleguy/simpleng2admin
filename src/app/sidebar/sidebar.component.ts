@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import {GlobalState} from '../global.state';
 
 @Component({
   selector: 'app-sidebar',

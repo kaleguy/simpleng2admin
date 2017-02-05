@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {GlobalState} from "./global.state";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    GlobalState
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
