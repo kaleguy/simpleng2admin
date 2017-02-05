@@ -2,12 +2,12 @@
 $primary-font:    Verdana, sans-serif
 $primary-color: #333
 
-html, body
+HTML, BODY
   font: 100% $primary-font
   color: $primary-color
   height: 100%
 
-div.app
+DIV.app
   height: 100%
 
 .menu-collapsed .sidebar
@@ -16,3 +16,36 @@ div.app
 .menu-collapsed .content-header
   margin-left: 0px !important
 
+#content
+  margin-left: 160px
+  transition: margin-left 0.5s
+  padding: 10px
+
+.menu-collapsed #content
+  margin-left: 0px
+
+INPUT
+  font-size: 14px
+
+BUTTON
+  font-size: 16px
+
+.hidden
+  display: none
+
+.loader
+  border: 16px solid #f3f3f3 /* Light grey */
+  border-top: 16px solid #3498db /* Blue */
+  border-radius: 50%
+  width: 40px
+  height: 40px
+  animation: spin 2s linear infinite
+  margin-left: auto
+  margin-right: auto
+  margin-top: 60px
+
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

@@ -1,1 +1,25 @@
-<div>weather</div>
+<div class="weather">
+    <h3>Enter City/State</h3>
+    <div>
+        <label>City:</label>
+        <input #city type="text">
+    </div>
+    <div>
+        <button (click)="getWeather(city.value)"
+                [disabled]="pending">Go</button>
+    </div>
+    <div class="loader" [ngClass]="{'hidden': !pending}">
+    </div>
+    <div id="report"
+         [ngClass]="{'hidden': reportHidden}">
+        <div>Weather Report for {{report.name}} on {{report.dt * 1000 | date:'shortDate'}}</div>
+        <div class="report">
+            <div>Current Weather: {{report.weather[0].main}}</div>
+            <div>Last Reading: {{report.dt * 1000 | date:'shortTime'}}</div>
+            <div>Temperature: {{report.main.temp}}</div>
+            <div>Humidity: {{report.main.humidity}}</div>
+            <div>Sunrise: {{report.sys.sunrise * 1000 | date:'shortTime' }}</div>
+            <div>Sunset: {{report.sys.sunset * 1000 | date:'shortTime' }}</div>
+        </div>
+    </div>
+</div>
