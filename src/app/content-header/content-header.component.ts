@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import {MenuToggleComponent} from '../menu-toggle/menu-toggle.component';
+import {GlobalState} from '../global.state';
 
 @Component({
   selector: 'app-content-header',
@@ -7,7 +9,6 @@ import {Router} from '@angular/router'
   styleUrls: ['./content-header.component.sass']
 })
 export class ContentHeaderComponent implements OnInit {
-  public isMenuCollapsed:boolean = false;
 
   public router:Router;
 

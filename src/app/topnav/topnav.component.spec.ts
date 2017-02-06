@@ -2,6 +2,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { Location, CommonModule } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, inject, async } from '@angular/core/testing';
+
 
 import { TopnavComponent } from './topnav.component';
 
@@ -11,6 +17,10 @@ describe('TopnavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        CommonModule,
+        RouterTestingModule
+      ],
       declarations: [ TopnavComponent ]
     })
     .compileComponents();
