@@ -2,7 +2,8 @@
     <h3>Enter City/State</h3>
     <div>
         <label>City:</label>
-        <input #city type="text">
+        <input #city type="text"
+               (keyup.enter)="getWeather(city.value)">
     </div>
     <div>
         <button (click)="getWeather(city.value)"
@@ -12,14 +13,22 @@
     </div>
     <div id="report"
          [ngClass]="{'hidden': reportHidden}">
-        <div>Weather Report for {{report.name}} on {{report.dt * 1000 | date:'shortDate'}}</div>
+        <div>Weather Report for {{report.name}}</div>
         <div class="report">
             <div>Current Weather: {{report.weather[0].main}}</div>
-            <div>Last Reading: {{report.dt * 1000 | date:'shortTime'}}</div>
+            <div>Last Reading: {{report.dt * 1000 | date:'M/dd/yyyy hh:mm:ss'}}</div>
             <div>Temperature: {{report.main.temp}}</div>
             <div>Humidity: {{report.main.humidity}}</div>
-            <div>Sunrise: {{report.sys.sunrise * 1000 | date:'shortTime' }}</div>
-            <div>Sunset: {{report.sys.sunset * 1000 | date:'shortTime' }}</div>
+            <div>Sunrise: {{report.sys.sunrise * 1000 | date:'M/dd/yyyy hh:mm:ss' }}</div>
+            <div>Sunset: {{report.sys.sunset * 1000 | date:'M/dd/yyyy hh:mm:ss' }}</div>
+        </div>
+    </div>
+    <div id="message">
+        <div>
+        {{report.message.message}}
+        </div>
+        <div>
+        {{report.message.cod}}
         </div>
     </div>
 </div>
