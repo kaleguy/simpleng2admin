@@ -50,24 +50,20 @@ export class WeatherComponent implements OnInit {
         if (delay){
             return ob.delay(delay);
         } else {
-            console.log("TOTTTT");
             return ob;
         }
 
     }
 
     public getWeather(city:string, delay, cb){
-console.log("IN WATTTT");
        // callback for testing
        if (! cb){
-           console.log("WTF?");
            cb = ()=>{}
        }
 
        this.getWeatherService(city, delay)
            .subscribe(
             res => {
-                console.log("HHHHHHHHH");
                 this.pending = false;
                 this.reportHidden = false;
                 this.report = res;
@@ -75,7 +71,6 @@ console.log("IN WATTTT");
                 cb();
             },
             err => {
-                console.log("XXXXXXXXX");
                 try {
                     this.report.message = JSON.parse(err._body);
                     this.report.message.status = err.status;

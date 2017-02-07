@@ -167,8 +167,45 @@ describe('WeatherComponent with Mocks', () => {
 
           //component.get
 
-        })));
-  });
+        }))
+    );
+    it('should display error message for 500', async(inject(
+        [MockBackend], (mockBackend) => {
+
+          mockBackend.connections.subscribe(conn => {
+            conn.mockRespond(
+                new Response(new ResponseOptions({ body: JSON.stringify(mockResponse) }))
+            );
+          });
+
+          let fixture = TestBed.createComponent(WeatherComponent);
+          //let element = fixture.nativeElement;
+          let component = fixture.componentInstance;
+          component.getWeatherService('New York', 0)
+              .subscribe(
+                  res => {
+                    expect(res).toEqual({
+                      city: 'foo'
+                    });
+                  },
+                  err => {
+                    console.log(err);
+                  },
+                  x => console.log("WS test complete")
+
+              );
+
+/*
+          conn.mockError(new Response(new ResponseOptions({
+            body: JSON.stringify({ error: 'Internal Server Error' }),
+            status: 500,
+          })));
+*/
+
+        }))
+    );
+
+  }); // describe
 
 
 });
