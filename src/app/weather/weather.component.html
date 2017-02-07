@@ -6,7 +6,7 @@
                (keyup.enter)="getWeather(city.value)">
     </div>
     <div>
-        <button (click)="getWeather(city.value)"
+        <button (click)="getWeather(city.value, 1500)"
                 [disabled]="pending">Go</button>
     </div>
     <div class="loader" [ngClass]="{'hidden': !pending}">

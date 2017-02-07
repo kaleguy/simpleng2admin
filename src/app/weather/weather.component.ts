@@ -34,37 +34,48 @@ export class WeatherComponent implements OnInit {
     constructor(private http:Http) {
     }
 
-    public getWeatherService(city:string) {
+    public getWeatherService(city:string, delay:number) {
 
         this.pending = true;
         this.report.message = '';
         this.reportHidden = true;
 
-        return this.http.get(this.baseWeatherURL + city + this.urlSuffix)
+        let ob =  this.http.get(this.baseWeatherURL + city + this.urlSuffix)
             .map(res => {
                     console.log(res);
                     return res.json()
                 }
-            )
-            .delay(1500)
+            );
+
+        if (delay){
+            return ob.delay(delay);
+        } else {
+            console.log("TOTTTT");
+            return ob;
+        }
+
     }
 
-    public getWeather(city:string, cb){
-
+    public getWeather(city:string, delay, cb){
+console.log("IN WATTTT");
        // callback for testing
        if (! cb){
+           console.log("WTF?");
            cb = ()=>{}
        }
 
-       this.getWeatherService(city)
+       this.getWeatherService(city, delay)
            .subscribe(
             res => {
+                console.log("HHHHHHHHH");
                 this.pending = false;
                 this.reportHidden = false;
                 this.report = res;
                 this.report.message = {};
+                cb();
             },
             err => {
+                console.log("XXXXXXXXX");
                 try {
                     this.report.message = JSON.parse(err._body);
                     this.report.message.status = err.status;
@@ -80,7 +91,6 @@ export class WeatherComponent implements OnInit {
             }
         )
     }
-
 
     ngOnInit() {
     }
