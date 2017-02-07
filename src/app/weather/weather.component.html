@@ -13,7 +13,7 @@
     </div>
     <div id="report"
          [ngClass]="{'hidden': reportHidden}">
-        <div>Weather Report for {{report.name}}</div>
+        <div>Weather Report for <span id="name">{{report.name}}</span></div>
         <div class="report">
             <div>Current Weather: {{report.weather[0].main}}</div>
             <div>Last Reading: {{report.dt * 1000 | date:'M/dd/yyyy hh:mm:ss'}}</div>
@@ -23,11 +23,11 @@
             <div>Sunset: {{report.sys.sunset * 1000 | date:'M/dd/yyyy hh:mm:ss' }}</div>
         </div>
     </div>
-    <div id="message">
-        <div>
+    <div>
+        <div id="message">
         {{report.message.message}}
         </div>
-        <div>
+        <div id="err">
         {{report.message.cod}}
         </div>
     </div>

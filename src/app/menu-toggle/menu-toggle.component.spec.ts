@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import {GlobalState} from '../global.state';
 
 import { MenuToggleComponent } from './menu-toggle.component';
 
@@ -12,6 +13,7 @@ describe('MenuToggleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MenuToggleComponent ]
+      providers: [ GlobalState ]
     })
     .compileComponents();
   }));

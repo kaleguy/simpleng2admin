@@ -31,46 +31,54 @@ export class WeatherComponent implements OnInit {
         }
     };
 
-
-
     constructor(private http:Http) {
     }
 
-    getWeather(city:string) {
+    public getWeatherService(city:string) {
 
         this.pending = true;
         this.report.message = '';
         this.reportHidden = true;
 
-        this.http.get(this.baseWeatherURL + city + this.urlSuffix)
+        return this.http.get(this.baseWeatherURL + city + this.urlSuffix)
             .map(res => {
                     console.log(res);
                     return res.json()
                 }
             )
             .delay(1500)
-            .subscribe(
-                res => {
+    }
 
-                    this.pending = false;
+    public getWeather(city:string, cb){
 
-                    if (res.cod === '404') return;
-                    if (res.cod >= '500') {
-                        this.report.message = res.message;
-                        return;
-                    }
+       // callback for testing
+       if (! cb){
+           cb = ()=>{}
+       }
 
-                    this.reportHidden = false;
-                    this.report = res;
-                },
-                err => {
+       this.getWeatherService(city)
+           .subscribe(
+            res => {
+                this.pending = false;
+                this.reportHidden = false;
+                this.report = res;
+                this.report.message = {};
+            },
+            err => {
+                try {
                     this.report.message = JSON.parse(err._body);
                     this.report.message.status = err.status;
-                    this.pending = false;
-                },
-                () => console.log(`Weather is retrieved`)
-            )
-
+                } catch(e){
+                    this.report.message = "Unknown Error."
+                }
+                this.pending = false;
+                cb();
+            },
+            () => {
+                console.log(`Weather is retrieved`);
+                cb();
+            }
+        )
     }
 
 

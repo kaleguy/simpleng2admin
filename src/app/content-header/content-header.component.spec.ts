@@ -7,7 +7,7 @@ import { DebugElement } from '@angular/core';
 import { MenuToggleComponent } from '../menu-toggle/menu-toggle.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed, inject, async } from '@angular/core/testing';
-import {GlobalState} from '../global.state';
+import { GlobalState } from '../global.state';
 
 import { ContentHeaderComponent } from './content-header.component';
 
@@ -20,6 +20,9 @@ describe('ContentHeaderComponent', () => {
       imports: [
         CommonModule,
         RouterTestingModule
+      ],
+      providers: [
+          GlobalState
       ],
       declarations: [ ContentHeaderComponent, MenuToggleComponent ]
     })
