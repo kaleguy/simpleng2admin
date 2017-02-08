@@ -9,7 +9,7 @@ import { GlobalState } from './global.state';
 })
 export class AppComponent {
 
-  isMenuCollapsed: boolean = false;
+  isMenuCollapsed = false;
 
   constructor(private _state: GlobalState) {
 
@@ -18,5 +18,4 @@ export class AppComponent {
     });
   }
 
-  //title = 'app works!';
 }

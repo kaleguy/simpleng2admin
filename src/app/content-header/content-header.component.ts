@@ -10,7 +10,7 @@ import {GlobalState} from '../global.state';
 })
 export class ContentHeaderComponent implements OnInit {
 
-  public router:Router;
+  public router: Router;
 
   constructor(private _router: Router) {
     this.router = _router;

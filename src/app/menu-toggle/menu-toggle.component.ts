@@ -8,9 +8,9 @@ import {GlobalState} from '../global.state';
 })
 export class MenuToggleComponent implements OnInit {
 
-  public isMenuCollapsed:boolean = false;
+  public isMenuCollapsed = false;
 
-  constructor(private _state:GlobalState) {
+  constructor(private _state: GlobalState) {
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });

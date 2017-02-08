@@ -5,18 +5,19 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormControl,  ReactiveFormsModule} from '@angular/forms';
 import {Observable} from 'rxjs/Rx';
-import {HttpModule, Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
-import {Response, ResponseOptions, BaseRequestOptions, HttpModule, XHRBackend} from '@angular/http';
+import {Response, ResponseOptions, BaseRequestOptions, Http, HttpModule, XHRBackend} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 
 import { WeatherComponent } from './weather.component';
 
 describe('WeatherComponent', () => {
+
   let component: WeatherComponent;
   let fixture: ComponentFixture<WeatherComponent>;
   let injector: Injector;
+  let element;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -47,7 +48,7 @@ describe('WeatherComponent', () => {
 
   it('should retrieve the results for New York ', (done) => {
 
-    let component = fixture.componentInstance;
+    component = fixture.componentInstance;
     component.getWeatherService('New York', 0)
         .subscribe(
             res => {
@@ -65,27 +66,27 @@ describe('WeatherComponent', () => {
 
   xit('should display the results for New York ', (done) => {
 
-    let fixture = TestBed.createComponent(WeatherComponent);
-    let element = fixture.nativeElement;
-    let component = fixture.componentInstance;
-    component.getWeather('New York', 0, ()=>{
+    fixture = TestBed.createComponent(WeatherComponent);
+    element = fixture.nativeElement;
+    component = fixture.componentInstance;
+    component.getWeather('New York', 0, () => {
       fixture.detectChanges();
       expect(element.querySelector('#name').innerHTML).toBe('New York');
       done();
-    })
+    });
 
   });
 
   xit('should display an error for city = koajfwe ', (done) => {
 
-    let fixture = TestBed.createComponent(WeatherComponent);
-    let element = fixture.nativeElement;
-    let component = fixture.componentInstance;
-    component.getWeather('koajfwe', 0, ()=>{
+    fixture = TestBed.createComponent(WeatherComponent);
+    element = fixture.nativeElement;
+    component = fixture.componentInstance;
+    component.getWeather('koajfwe', 0, () => {
       fixture.detectChanges();
       expect(element.querySelector('#message').innerHTML).toContain('Not found');
       done();
-    })
+    });
 
   });
 
@@ -95,7 +96,7 @@ describe('WeatherComponent', () => {
 describe('WeatherComponent with Mocks', () => {
   let component: WeatherComponent;
   let fixture: ComponentFixture<WeatherComponent>;
-  let mockBackend: MockBackend;
+  // let mockBackend: MockBackend;
   let injector: Injector;
 
   beforeEach(async(() => {
@@ -125,7 +126,7 @@ describe('WeatherComponent with Mocks', () => {
   });
 
   beforeEach(() => {
-    mockBackend = injector.get(XHRBackend);
+    // mockBackend = injector.get(XHRBackend);
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
   });
 
@@ -148,9 +149,9 @@ describe('WeatherComponent with Mocks', () => {
             );
           });
 
-          let fixture = TestBed.createComponent(WeatherComponent);
-          //let element = fixture.nativeElement;
-          let component = fixture.componentInstance;
+          fixture = TestBed.createComponent(WeatherComponent);
+          // element = fixture.nativeElement;
+          component = fixture.componentInstance;
           component.getWeatherService('New York', 0)
               .subscribe(
                   res => {
@@ -161,11 +162,11 @@ describe('WeatherComponent with Mocks', () => {
                   err => {
                     console.log(err);
                   },
-                  x => console.log("WS test complete")
+                  x => console.log('WS test complete')
 
               );
 
-          //component.get
+          // component.get
 
         }))
     );
@@ -178,9 +179,9 @@ describe('WeatherComponent with Mocks', () => {
             );
           });
 
-          let fixture = TestBed.createComponent(WeatherComponent);
-          //let element = fixture.nativeElement;
-          let component = fixture.componentInstance;
+          fixture = TestBed.createComponent(WeatherComponent);
+          // element = fixture.nativeElement;
+          component = fixture.componentInstance;
           component.getWeatherService('New York', 0)
               .subscribe(
                   res => {
@@ -191,7 +192,7 @@ describe('WeatherComponent with Mocks', () => {
                   err => {
                     console.log(err);
                   },
-                  x => console.log("WS test complete")
+                  x => console.log('WS test complete')
 
               );
 

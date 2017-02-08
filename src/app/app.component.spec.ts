@@ -8,10 +8,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { GlobalState } from "./global.state";
+import { GlobalState } from './global.state';
 import { ContentHeaderComponent } from './content-header/content-header.component';
 import { MenuToggleComponent } from './menu-toggle/menu-toggle.component';
-import { ContentHeaderComponent } from './content-header/content-header.component';
 
 
 describe('AppComponent', () => {

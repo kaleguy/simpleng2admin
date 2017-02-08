@@ -14,13 +14,13 @@ import * as moment from 'moment/moment';
 })
 export class WeatherComponent implements OnInit {
 
-    private baseWeatherURL:string = 'http://api.openweathermap.org/data/2.5/weather?q=';
-    private urlSuffix:string = "&units=imperial&appid=c478bded4945b00879ff8199ec9aed58";
+    private baseWeatherURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
+    private urlSuffix = '&units=imperial&appid=c478bded4945b00879ff8199ec9aed58';
 
-    reportHidden:boolean = true;
-    pending:boolean = false;
+    reportHidden = true;
+    pending = false;
 
-    report:any = {
+    report: any = {
         main: '',
         weather: [{main: ''}],
         coord: {dt: ''},
@@ -31,23 +31,23 @@ export class WeatherComponent implements OnInit {
         }
     };
 
-    constructor(private http:Http) {
+    constructor(private http: Http) {
     }
 
-    public getWeatherService(city:string, delay:number) {
+    public getWeatherService(city: string, delay: number) {
 
         this.pending = true;
         this.report.message = '';
         this.reportHidden = true;
 
-        let ob =  this.http.get(this.baseWeatherURL + city + this.urlSuffix)
+        const ob =  this.http.get(this.baseWeatherURL + city + this.urlSuffix)
             .map(res => {
                     console.log(res);
-                    return res.json()
+                    return res.json();
                 }
             );
 
-        if (delay){
+        if (delay) {
             return ob.delay(delay);
         } else {
             return ob;
@@ -55,10 +55,10 @@ export class WeatherComponent implements OnInit {
 
     }
 
-    public getWeather(city:string, delay, cb){
+    public getWeather(city: string, delay, cb) {
        // callback for testing
-       if (! cb){
-           cb = ()=>{}
+       if (! cb) {
+           cb = () => {};
        }
 
        this.getWeatherService(city, delay)
@@ -74,17 +74,17 @@ export class WeatherComponent implements OnInit {
                 try {
                     this.report.message = JSON.parse(err._body);
                     this.report.message.status = err.status;
-                } catch(e){
-                    this.report.message = "Unknown Error."
+                } catch (e) {
+                    this.report.message = 'Unknown Error.';
                 }
                 this.pending = false;
                 cb();
             },
             () => {
-                console.log(`Weather is retrieved`);
+                console.log('Weather is retrieved');
                 cb();
             }
-        )
+        );
     }
 
     ngOnInit() {
