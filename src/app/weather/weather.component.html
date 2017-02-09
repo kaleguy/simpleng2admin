@@ -1,9 +1,8 @@
 <div class="weather">
-    <h3>Enter City/State</h3>
+    <h3>Enter City</h3>
     <div>
-        <label>City:</label>
         <input #city type="text"
-               (keyup.enter)="getWeather(city.value)">
+               (keyup.enter)="getWeather(city.value, 1500)">
     </div>
     <div>
         <button (click)="getWeather(city.value, 1500)"
