@@ -1,3 +1,5 @@
+https://david-dm.org/kaleguy/simpleng2admin.svg
+
 # SimpleAdmin
 
 This is a simple admin demo app built with Angular 2, using a single module and two routes.
@@ -5,6 +7,7 @@ This is a simple admin demo app built with Angular 2, using a single module and 
 It has one content page with a weather widget.
 
 The project was started with code generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.30.
+
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
