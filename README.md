@@ -1,4 +1,5 @@
-https://david-dm.org/kaleguy/simpleng2admin.svg
+
+[![Dependency Status](https://david-dm.org/kaleguy/simpleng2admin.svg)](https://david-dm.org/kaleguy/simpleng2admin)
 
 # SimpleAdmin
 
