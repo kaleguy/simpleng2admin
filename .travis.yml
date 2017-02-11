@@ -8,8 +8,8 @@ branches:
 
 before_script:
   - npm install -g angular-cli
-  - npm install angular-cli 
   - npm install
+  - npm install angular-cli
 
 script:
   - ng build --prod
