@@ -8,6 +8,7 @@ branches:
 
 before_script:
   - npm install -g angular-cli
+  - npm install 
 
 script:
   - ng build --prod
@@ -19,7 +20,7 @@ notifications:
     on_success: change
 
 
-# sudo: required
+## sudo: required
 # dist: trusty
 #language: node_js
 #node_js:
