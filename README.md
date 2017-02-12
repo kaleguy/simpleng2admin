@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/kaleguy/simpleng2admin.svg?branch=master)](https://travis-ci.org/kaleguy/simpleng2admin)
-
 [![Dependency Status](https://david-dm.org/kaleguy/simpleng2admin.svg)](https://david-dm.org/kaleguy/simpleng2admin)
 
 
