@@ -28,7 +28,7 @@ before_script:
 script:
   - ng build --prod
   - ng lint
-  - ng test
+  - karma start config/karma.conf.js --single-run
 
 notifications:
   email:
