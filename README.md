@@ -1,5 +1,7 @@
+[![Build Status](https://travis-ci.org/kaleguy/simpleng2admin.svg?branch=master)](https://travis-ci.org/kaleguy/simpleng2admin)
 
 [![Dependency Status](https://david-dm.org/kaleguy/simpleng2admin.svg)](https://david-dm.org/kaleguy/simpleng2admin)
+
 
 # SimpleAdmin
 
@@ -9,6 +11,8 @@ It has one content page with a weather widget.
 
 The project was started with code generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.30.
 
+Note on building on Linux/Ubuntu, for some reason getting this to work required adding two versions of the angular CLI
+into the package.json dev dependencies.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
