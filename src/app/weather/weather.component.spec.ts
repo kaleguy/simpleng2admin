@@ -12,8 +12,8 @@ import {MockBackend, MockConnection} from '@angular/http/testing';
 
 import { WeatherComponent } from './weather.component';
 
-// Next test batch directly calls the API without a mock. It can be
-// disabled once E2E tests are in place.
+// Next test batch directly calls the API without a mock.
+// To enable, change 'xit' to 'it'.
 describe('WeatherComponent', () => {
 
     let component: WeatherComponent;
@@ -48,7 +48,7 @@ describe('WeatherComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should retrieve the results for New York ', (done) => {
+    xit('should retrieve the results for New York ', (done) => {
 
         component = fixture.componentInstance;
         component.getWeatherService('New York', 0)
@@ -66,7 +66,7 @@ describe('WeatherComponent', () => {
             );
     });
 
-    it('should display the results for New York ', (done) => {
+    xit('should display the results for New York ', (done) => {
 
         fixture = TestBed.createComponent(WeatherComponent);
         element = fixture.nativeElement;
@@ -79,7 +79,7 @@ describe('WeatherComponent', () => {
 
     });
 
-    it('should display an error for city = koajfwe ', (done) => {
+    xit('should display an error for city = koajfwe ', (done) => {
 
         fixture = TestBed.createComponent(WeatherComponent);
         element = fixture.nativeElement;
