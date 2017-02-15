@@ -14,8 +14,7 @@ import * as moment from 'moment/moment';
 })
 export class WeatherComponent implements OnInit {
 
-    private baseWeatherURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
-    private urlSuffix = '&units=imperial&appid=c478bded4945b00879ff8199ec9aed58';
+    private baseWeatherURL = 'https://tranquil-headland-86417.herokuapp.com/weather/';
 
     reportHidden = true;
     pending = false;
@@ -40,7 +39,7 @@ export class WeatherComponent implements OnInit {
         this.report.message = '';
         this.reportHidden = true;
 
-        const ob =  this.http.get(this.baseWeatherURL + city + this.urlSuffix)
+        const ob =  this.http.get(this.baseWeatherURL + city)
             .map(res => {
                     console.log(res);
                     return res.json();
