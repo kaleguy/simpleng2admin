@@ -14,6 +14,7 @@ import * as moment from 'moment/moment';
 })
 export class WeatherComponent implements OnInit {
 
+    // Pass-through proxy to openweather api
     private baseWeatherURL = 'https://tranquil-headland-86417.herokuapp.com/weather/';
 
     reportHidden = true;
