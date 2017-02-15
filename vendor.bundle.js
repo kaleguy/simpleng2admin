@@ -16946,14 +16946,14 @@ var CompileMetadataResolver = (function () {
     };
     /**
      * Gets the metadata for the given directive.
-     * This assumes `loadNgModuleMetadata` has been called first.
+     * This assumes `loadNgModuleDirectiveAndPipeMetadata` has been called first.
      * @param {?} directiveType
      * @return {?}
      */
     CompileMetadataResolver.prototype.getDirectiveMetadata = function (directiveType) {
         var /** @type {?} */ dirMeta = this._directiveCache.get(directiveType);
         if (!dirMeta) {
-            this._reportError(new __WEBPACK_IMPORTED_MODULE_16__util__["e" /* SyntaxError */]("Illegal state: getDirectiveMetadata can only be called after loadNgModuleMetadata for a module that declares it. Directive " + stringifyType(directiveType) + "."), directiveType);
+            this._reportError(new __WEBPACK_IMPORTED_MODULE_16__util__["e" /* SyntaxError */]("Illegal state: getDirectiveMetadata can only be called after loadNgModuleDirectiveAndPipeMetadata for a module that declares it. Directive " + stringifyType(directiveType) + "."), directiveType);
         }
         return dirMeta;
     };
@@ -17306,14 +17306,14 @@ var CompileMetadataResolver = (function () {
     };
     /**
      * Gets the metadata for the given pipe.
-     * This assumes `loadNgModuleMetadata` has been called first.
+     * This assumes `loadNgModuleDirectiveAndPipeMetadata` has been called first.
      * @param {?} pipeType
      * @return {?}
      */
     CompileMetadataResolver.prototype.getPipeMetadata = function (pipeType) {
         var /** @type {?} */ pipeMeta = this._pipeCache.get(pipeType);
         if (!pipeMeta) {
-            this._reportError(new __WEBPACK_IMPORTED_MODULE_16__util__["e" /* SyntaxError */]("Illegal state: getPipeMetadata can only be called after loadNgModuleMetadata for a module that declares it. Pipe " + stringifyType(pipeType) + "."), pipeType);
+            this._reportError(new __WEBPACK_IMPORTED_MODULE_16__util__["e" /* SyntaxError */]("Illegal state: getPipeMetadata can only be called after loadNgModuleDirectiveAndPipeMetadata for a module that declares it. Pipe " + stringifyType(pipeType) + "."), pipeType);
         }
         return pipeMeta;
     };
@@ -28582,6 +28582,7 @@ var /** @type {?} */ wtfEndTimeRange = wtfEnabled ? __WEBPACK_IMPORTED_MODULE_0_
  *   -->
  *
  * ### Example
+ *
  * ```
  * import {Component, NgZone} from '\@angular/core';
  * import {NgIf} from '\@angular/common';
@@ -28636,6 +28637,7 @@ var /** @type {?} */ wtfEndTimeRange = wtfEnabled ? __WEBPACK_IMPORTED_MODULE_0_
  *   }
  * }
  * ```
+ *
  * \@experimental
  */
 var NgZone = (function () {
@@ -49748,7 +49750,7 @@ var JitCompiler = (function () {
         // Note: the loadingPromise for a module only includes the loading of the exported directives
         // of imported modules.
         // However, for runtime compilation, we want to transitively compile all modules,
-        // so we also need to call loadNgModuleMetadata for all nested modules.
+        // so we also need to call loadNgModuleDirectiveAndPipeMetadata for all nested modules.
         ngModule.transitiveModule.modules.forEach(function (localModuleMeta) {
             loadingPromises.push(_this._metadataResolver.loadNgModuleDirectiveAndPipeMetadata(localModuleMeta.reference, isSync));
         });
@@ -58007,7 +58009,7 @@ function Version_tsickle_Closure_declarations() {
 /**
  * @stable
  */
-var /** @type {?} */ VERSION = new Version('2.4.6');
+var /** @type {?} */ VERSION = new Version('2.4.7');
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -63219,7 +63221,7 @@ var RouterPreloader = (function () {
         var /** @type {?} */ res = [];
         for (var _i = 0, routes_1 = routes; _i < routes_1.length; _i++) {
             var c = routes_1[_i];
-            // we already have the config loaded, just recurce
+            // we already have the config loaded, just recurse
             if (c.loadChildren && !c.canLoad && ((c))._loadedConfig) {
                 var /** @type {?} */ childConfig = ((c))._loadedConfig;
                 res.push(this.processRoutes(childConfig.injector, childConfig.routes));
@@ -67472,7 +67474,7 @@ var /** @type {?} */ isObservable = __WEBPACK_IMPORTED_MODULE_0__angular_core__[
 /**
  * @stable
  */
-var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.6');
+var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.7');
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -71609,7 +71611,7 @@ function escapeBlocks(input) {
 /**
  * @stable
  */
-var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.6');
+var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.7');
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -77144,7 +77146,7 @@ function ReactiveFormsModule_tsickle_Closure_declarations() {
 /**
  * @stable
  */
-var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.6');
+var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.7');
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -77362,7 +77364,7 @@ function JsonpModule_tsickle_Closure_declarations() {
 /**
  * @stable
  */
-var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.6');
+var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.7');
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -77693,7 +77695,7 @@ var CachedResourceLoader = (function (_super) {
 /**
  * @stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.6');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.7');
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -79135,7 +79137,7 @@ function sanitizeStyle(value) {
 /**
  * @stable
  */
-var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.6');
+var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('2.4.7');
 //# sourceMappingURL=version.js.map
 
 /***/ }),
@@ -81009,7 +81011,7 @@ function getResolve(route) {
 /**
  * @stable
  */
-var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('3.4.6');
+var /** @type {?} */ VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Version */]('3.4.7');
 //# sourceMappingURL=version.js.map
 
 /***/ }),

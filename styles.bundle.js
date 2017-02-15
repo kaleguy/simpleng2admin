@@ -316,7 +316,7 @@ function updateLink(linkElement, obj) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(668);
+var content = __webpack_require__(669);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(389)(content, {});
@@ -325,8 +325,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../css-loader/index.js?{\"sourceMap\":false}!./../../postcss-loader/index.js!./font-awesome.css", function() {
-			var newContent = require("!!./../../css-loader/index.js?{\"sourceMap\":false}!./../../postcss-loader/index.js!./font-awesome.css");
+		module.hot.accept("!!./../node_modules/css-loader/index.js?{\"sourceMap\":false}!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js!./styles.sass", function() {
+			var newContent = require("!!./../node_modules/css-loader/index.js?{\"sourceMap\":false}!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js!./styles.sass");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -343,7 +343,7 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(669);
+var content = __webpack_require__(668);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(389)(content, {});
@@ -352,8 +352,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../node_modules/css-loader/index.js?{\"sourceMap\":false}!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js!./styles.sass", function() {
-			var newContent = require("!!./../node_modules/css-loader/index.js?{\"sourceMap\":false}!./../node_modules/postcss-loader/index.js!./../node_modules/sass-loader/index.js!./styles.sass");
+		module.hot.accept("!!./../../css-loader/index.js?{\"sourceMap\":false}!./../../postcss-loader/index.js!./font-awesome.css", function() {
+			var newContent = require("!!./../../css-loader/index.js?{\"sourceMap\":false}!./../../postcss-loader/index.js!./font-awesome.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -439,8 +439,8 @@ module.exports = __webpack_require__.p + "fontawesome-webfont.woff";
 /***/ 721:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(394);
-module.exports = __webpack_require__(393);
+__webpack_require__(393);
+module.exports = __webpack_require__(394);
 
 
 /***/ })

@@ -155,8 +155,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var WeatherComponent = (function () {
     function WeatherComponent(http) {
         this.http = http;
-        this.baseWeatherURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
-        this.urlSuffix = "&units=imperial&appid=c478bded4945b00879ff8199ec9aed58";
+        this.baseWeatherURL = 'https://tranquil-headland-86417.herokuapp.com/weather/';
         this.reportHidden = true;
         this.pending = false;
         this.report = {
@@ -170,32 +169,49 @@ var WeatherComponent = (function () {
             }
         };
     }
-    WeatherComponent.prototype.getWeather = function (city) {
-        var _this = this;
+    WeatherComponent.prototype.getWeatherService = function (city, delay) {
         this.pending = true;
         this.report.message = '';
         this.reportHidden = true;
-        this.http.get(this.baseWeatherURL + city + this.urlSuffix)
+        var ob = this.http.get(this.baseWeatherURL + city)
             .map(function (res) {
             console.log(res);
             return res.json();
-        })
-            .delay(1500)
+        });
+        if (delay) {
+            return ob.delay(delay);
+        }
+        else {
+            return ob;
+        }
+    };
+    WeatherComponent.prototype.getWeather = function (city, delay, cb) {
+        var _this = this;
+        // callback for testing
+        if (!cb) {
+            cb = function () { };
+        }
+        this.getWeatherService(city, delay)
             .subscribe(function (res) {
             _this.pending = false;
-            if (res.cod === '404')
-                return;
-            if (res.cod >= '500') {
-                _this.report.message = res.message;
-                return;
-            }
             _this.reportHidden = false;
             _this.report = res;
+            _this.report.message = {};
+            cb();
         }, function (err) {
-            _this.report.message = JSON.parse(err._body);
-            _this.report.message.status = err.status;
+            try {
+                _this.report.message = JSON.parse(err._body);
+                _this.report.message.status = err.status;
+            }
+            catch (e) {
+                _this.report.message = 'Unknown Error.';
+            }
             _this.pending = false;
-        }, function () { return console.log("Weather is retrieved"); });
+            cb();
+        }, function () {
+            console.log('Weather is retrieved');
+            cb();
+        });
     };
     WeatherComponent.prototype.ngOnInit = function () {
     };
@@ -612,7 +628,7 @@ module.exports = ""
 /***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = ".content-header {\n  padding: 10px;\n  margin-left: 160px;\n  -webkit-transition: margin 0.5s;\n  transition: margin 0.5s;\n  overflow: hidden;\n  white-space: nowrap;\n  background-color: #dddddd; }\n"
+module.exports = ".content-header {\n  padding: 10px;\n  margin-left: 160px;\n  -webkit-transition: margin 0.5s;\n  transition: margin 0.5s;\n  overflow: hidden;\n  white-space: nowrap;\n  background-color: #dddddd;\n  text-transform: capitalize; }\n"
 
 /***/ }),
 
@@ -626,7 +642,7 @@ module.exports = "DIV {\n  width: 100%;\n  text-align: center;\n  font-size: 22p
 /***/ 678:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "I {\n  cursor: pointer;\n  margin-right: 10px; }\n"
 
 /***/ }),
 
@@ -640,14 +656,14 @@ module.exports = "DIV {\n  width: 100%;\n  text-align: center;\n  font-size: 22p
 /***/ 680:
 /***/ (function(module, exports) {
 
-module.exports = ".heading {\n  padding: 10px;\n  text-align: center;\n  font-weight: bold;\n  background-color: #ccccee; }\n\n.sidebar DIV {\n  padding: 10px;\n  cursor: pointer; }\n\nA {\n  text-decoration: none;\n  color: #ffffff; }\n\n.sidebar {\n  float: left;\n  width: 160px;\n  background-color: #1c94c4;\n  height: 100%;\n  -webkit-transition: width 0.5s;\n  transition: width 0.5s;\n  overflow: hidden;\n  white-space: nowrap; }\n"
+module.exports = ".heading {\n  padding: 10px;\n  font-weight: normal;\n  background-color: #2da5d5;\n  border-bottom: none;\n  color: #ffffff; }\n\n.menuHighlight {\n  background-color: #00cccc; }\n\n.sidebar {\n  float: left;\n  width: 160px;\n  background-color: #1c94c4;\n  height: 100%;\n  -webkit-transition: width 0.5s;\n  transition: width 0.5s;\n  overflow: hidden;\n  white-space: nowrap; }\n\n.links DIV {\n  padding: 10px;\n  color: #ffffff;\n  cursor: pointer;\n  border-bottom: 1px solid #ffffff; }\n\n.links DIV:hover {\n  background: #00cccc; }\n"
 
 /***/ }),
 
 /***/ 681:
 /***/ (function(module, exports) {
 
-module.exports = "DIV {\n  background: #eeeeee;\n  padding: 10px; }\n\n.fa-bars {\n  cursor: pointer; }\n"
+module.exports = "DIV {\n  background: #eeeeee;\n  padding: 10px;\n  text-transform: capitalize; }\n\n.fa-bars {\n  cursor: pointer; }\n"
 
 /***/ }),
 
@@ -696,7 +712,7 @@ module.exports = "<div>\n  404 Page Not Found\n</div>\n"
 /***/ 688:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sidebar\">\n  <div class=\"heading\">\n    Menu\n  </div>\n  <div>\n    <a routerLink=\"/home\">\n      <i class=\"fa fa-fw fa-dashboard\"></i> Home\n    </a>\n  </div>\n  <div>\n    <a routerLink=\"/weather\">\n      <i class=\"fa fa-fw fa-sun-o\"></i> Weather\n    </a>\n  </div>\n</div>\n"
+module.exports = "<div class=\"sidebar\">\n  <div class=\"heading\">Menu</div>\n  <div class=\"links\">\n    <div routerLink=\"/home\" routerLinkActive=\"menuHighlight\">\n        <i class=\"fa fa-fw fa-dashboard\"></i> Home\n    </div>\n    <div routerLink=\"/weather\" routerLinkActive=\"menuHighlight\">\n        <i class=\"fa fa-fw fa-sun-o\"></i> Weather\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -710,7 +726,7 @@ module.exports = "<div>\n    Simple App / {{router.url | slice:1}} /\n</div>"
 /***/ 690:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"weather\">\n    <h3>Enter City/State</h3>\n    <div>\n        <label>City:</label>\n        <input #city type=\"text\"\n               (keyup.enter)=\"getWeather(city.value)\">\n    </div>\n    <div>\n        <button (click)=\"getWeather(city.value)\"\n                [disabled]=\"pending\">Go</button>\n    </div>\n    <div class=\"loader\" [ngClass]=\"{'hidden': !pending}\">\n    </div>\n    <div id=\"report\"\n         [ngClass]=\"{'hidden': reportHidden}\">\n        <div>Weather Report for {{report.name}}</div>\n        <div class=\"report\">\n            <div>Current Weather: {{report.weather[0].main}}</div>\n            <div>Last Reading: {{report.dt * 1000 | date:'M/dd/yyyy hh:mm:ss'}}</div>\n            <div>Temperature: {{report.main.temp}}</div>\n            <div>Humidity: {{report.main.humidity}}</div>\n            <div>Sunrise: {{report.sys.sunrise * 1000 | date:'M/dd/yyyy hh:mm:ss' }}</div>\n            <div>Sunset: {{report.sys.sunset * 1000 | date:'M/dd/yyyy hh:mm:ss' }}</div>\n        </div>\n    </div>\n    <div id=\"message\">\n        <div>\n        {{report.message.message}}\n        </div>\n        <div>\n        {{report.message.cod}}\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"weather\">\n    <h3>Enter City</h3>\n    <div>\n        <input #city type=\"text\"\n               (keyup.enter)=\"getWeather(city.value, 1500)\">\n    </div>\n    <div>\n        <button (click)=\"getWeather(city.value, 1500)\"\n                [disabled]=\"pending\">Go</button>\n    </div>\n    <div class=\"loader\" [ngClass]=\"{'hidden': !pending}\">\n    </div>\n    <div id=\"report\"\n         [ngClass]=\"{'hidden': reportHidden}\">\n        <div>Weather Report for <span id=\"name\">{{report.name}}</span></div>\n        <div class=\"report\">\n            <div>Current Weather: {{report.weather[0].main}}</div>\n            <div>Last Reading: {{report.dt * 1000 | date:'M/dd/yyyy hh:mm:ss'}}</div>\n            <div>Temperature: {{report.main.temp}}</div>\n            <div>Humidity: {{report.main.humidity}}</div>\n            <div>Sunrise: {{report.sys.sunrise * 1000 | date:'M/dd/yyyy hh:mm:ss' }}</div>\n            <div>Sunset: {{report.sys.sunset * 1000 | date:'M/dd/yyyy hh:mm:ss' }}</div>\n        </div>\n    </div>\n    <div>\n        <div id=\"message\">\n        {{report.message.message}}\n        </div>\n        <div id=\"err\">\n        {{report.message.cod}}\n        {{report.message.status}}\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
