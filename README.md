@@ -4,7 +4,7 @@
 
 # SimpleAdmin
 
-[Live Demo](https://kaleguy.github.io/simpleng2admin/weather)
+[Live Demo](https://kaleguy.github.io/simpleng2admin/)
 
 This is a simple admin demo app built with Angular 2, using a single module and two routes.
 
