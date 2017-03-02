@@ -37,7 +37,11 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+If you get an error saying 'chromedriver not found' try running this command:
+```
+node_modules/protractor/bin/webdriver-manager update
+```
+At the moment there is just one simple e2e test as an example.
 
 ## Deploying to GitHub Pages
 
