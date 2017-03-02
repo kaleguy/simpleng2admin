@@ -45,7 +45,8 @@ At the moment there is just one simple e2e test as an example.
 
 ## Deploying to GitHub Pages
 
-Run `ng github-pages:deploy` to deploy to GitHub Pages.
+Create a branch called 'gh-pages', build the project, switch to the gh-pages branch and
+replace the contents of the main folder with the files in the dist folder. 
 
 ## Further help
 
